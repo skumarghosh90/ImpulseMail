@@ -51,6 +51,17 @@ public class UserDaoTest {
 		}
 		
 	}
+	
+	@Test
+	public void testDelete() {
+		try{
+			User delUser=getUserDao().findUserByUsername("impulse4");
+			getUserDao().delete(delUser);
+		}
+		catch(Exception e) {
+			fail("Exception Thrown: " +e.getMessage());
+		}
+	}
 
 	
 

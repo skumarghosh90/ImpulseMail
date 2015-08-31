@@ -1,7 +1,7 @@
 package org.impulsemail.ImpulseMailDB.dao.impl;
 
 import java.util.List;
-
+import org.hibernate.criterion.Restrictions;
 import org.impulsemail.ImpulseMailDB.dao.UserDao;
 import org.impulsemail.ImpulseMailDB.entity.User;
 import org.springframework.dao.DataAccessException;
@@ -21,6 +21,12 @@ public class UserDaoImpl extends BaseDaoImpl<User, Integer> implements UserDao {
 	@Transactional(readOnly=true)
 	public User findById(Integer id) throws DataAccessException {
 		return findById(User.class, id);
+	}
+
+	@Override
+	@Transactional(readOnly=true)
+	public User findUserByUsername(String username) {
+		return (User) getCurrentSession().createCriteria(User.class).add(Restrictions.eq("username", username).ignoreCase()).uniqueResult();
 	}
 
 }

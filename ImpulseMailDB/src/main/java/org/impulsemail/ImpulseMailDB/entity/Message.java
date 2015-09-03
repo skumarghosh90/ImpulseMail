@@ -18,8 +18,8 @@ public class Message extends BaseEntity {
 	@Column(name="MSG_ID")
 	private Long messageId;
 	
-	@Column(name="MSG_SNDR")
-	@OneToMany() //Todo.. check mapping
-	private Long messageSender;
+	@Column(name="MSG_SNDR_USER_ID")
+	@OneToMany() Todo.. check mapping
+	private Long messageSenderUserId;
 
 }

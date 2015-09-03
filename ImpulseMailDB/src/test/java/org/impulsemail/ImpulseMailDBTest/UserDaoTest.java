@@ -10,6 +10,7 @@ import org.impulsemail.ImpulseMailDB.entity.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -30,8 +31,8 @@ public class UserDaoTest {
 			user.setUserLastName("impulse");
 			user.setUserAdminRole("Y");
 			user.setUserStatus("ACTIV");
-			user.setCretDtm(new Date());
-			user.setLstUpdtDtm(new Date());
+			user.setCretDtm(new Timestamp(new Date().getTime()));
+			user.setLstUpdtDtm(new Timestamp(new Date().getTime()));
 			
 			getUserDao().saveOrUpdate(user);
 		}
@@ -49,7 +50,6 @@ public class UserDaoTest {
 		catch(Exception e) {
 			fail("Exception Thrown: " +e.getMessage());
 		}
-		
 	}
 	
 	@Test

@@ -2,7 +2,6 @@ package org.impulsemail.ImpulseMailDB.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,7 +19,7 @@ public class Message extends BaseEntity {
 	private Long messageId;
 	
 	@Column(name="MSG_SNDR")
-	@OneToMany() Todo.. check mapping
+	@OneToMany() //Todo.. check mapping
 	private Long messageSender;
 
 }

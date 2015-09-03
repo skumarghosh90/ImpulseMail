@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 
@@ -16,7 +17,8 @@ import javax.persistence.Table;
 public class User extends BaseEntity implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="MAIL_USER_ID_SEQ_GEN")
+	@SequenceGenerator(name="MAIL_USER_ID_SEQ_GEN", sequenceName="MAIL_USER_ID_SEQ_GEN")
 	@Column(name="USER_ID")
 	private Long userId;
 	
@@ -38,11 +40,9 @@ public class User extends BaseEntity implements Serializable {
 	@Column(name="USER_ADM_RLE", length=1, nullable=false)
 	private String userAdminRole;
 
-	@Column(name="USER_EMAIL" , length=100, nullable=false)
+	@Column(name="USER_EMAIL" , length=100, unique=true, nullable=false)
 	private String userEmail;
 
-
-	
 	
 	public Long getUserId() {
 		return userId;

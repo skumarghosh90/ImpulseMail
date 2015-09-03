@@ -1,7 +1,7 @@
 package org.impulsemail.ImpulseMailDB.entity;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
@@ -11,25 +11,26 @@ import javax.persistence.MappedSuperclass;
 public abstract class BaseEntity implements Serializable {
 
 	@Column(name="CRET_DTM" , nullable=false)
-	private Date cretDtm;
+	private Timestamp cretDtm;
 	
 	@Column(name="LST_UPDT_DTM" , nullable=true)
-	private Date lstUpdtDtm;
+	private Timestamp lstUpdtDtm;
+
 	
-	public Date getCretDtm() {
+	public Timestamp getCretDtm() {
 		return cretDtm;
 	}
 
-	public void setCretDtm(Date cretDtm) {
+	public void setCretDtm(Timestamp cretDtm) {
 		this.cretDtm = cretDtm;
 	}
 
-	public Date getLstUpdtDtm() {
+	public Timestamp getLstUpdtDtm() {
 		return lstUpdtDtm;
 	}
 
-	public void setLstUpdtDtm(Date lstUpdtDtm) {
+	public void setLstUpdtDtm(Timestamp lstUpdtDtm) {
 		this.lstUpdtDtm = lstUpdtDtm;
 	}
-
+	
 }

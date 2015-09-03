@@ -23,7 +23,7 @@ public class UserDaoTest {
 	public void testSaveOrupdate() {
 		try{
 			User user=new User();
-			user.setUsername("impulse4");
+			user.setUsername("impulse");
 			user.setPassword("impulse");
 			user.setUserEmail("impulse@impulsemail.com");
 			user.setUserFirstName("impulse");
@@ -55,7 +55,7 @@ public class UserDaoTest {
 	@Test
 	public void testDelete() {
 		try{
-			User delUser=getUserDao().findUserByUsername("impulse4");
+			User delUser=getUserDao().findUserByUsername("impulse");
 			getUserDao().delete(delUser);
 		}
 		catch(Exception e) {

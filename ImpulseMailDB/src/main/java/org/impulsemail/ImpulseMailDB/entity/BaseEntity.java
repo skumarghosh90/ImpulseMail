@@ -6,8 +6,9 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
+@SuppressWarnings("serial")
 @MappedSuperclass
-public class BaseEntity implements Serializable {
+public abstract class BaseEntity implements Serializable {
 
 	@Column(name="CRET_DTM" , nullable=false)
 	private Date cretDtm;

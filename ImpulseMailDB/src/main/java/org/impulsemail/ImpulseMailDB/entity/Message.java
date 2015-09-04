@@ -31,16 +31,19 @@ public class Message extends BaseEntity {
 	@JoinColumn(name="MSG_RCVR_USR_ID", nullable=false)
 	private User messageReceiver;
 	
+	@Column(name="MSG_STS_AT_SNDR_END", length=5, nullable=false)
+	private String msgStsAtSenderEnd;
+	
 	@Column(name="MSG_SENT_DTM", nullable=true)
 	private Timestamp sentDtm;
+	
+	@Column(name="MSG_STS_AT_RCVR_END", length=5, nullable=false)
+	private String msgStsAtReceiverEnd;
 	
 	@Column(name="MSG_RCVD_DTM", nullable=true)
 	private Timestamp receivedDtm;
 	
-	@Column(name="MSG_STS_AT_SNDR_END", length=5, nullable=false)
-	private String msgStsAtSenderEnd;
 	
-	@Column(name="MSG_STS_AT_RCVR_END", length=5, nullable=false)
-	private String msgStsAtReceiverEnd;
+	
 
 }

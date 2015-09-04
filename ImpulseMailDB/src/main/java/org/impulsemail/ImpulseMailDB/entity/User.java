@@ -13,34 +13,34 @@ import javax.persistence.Table;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name="MAIL_USER")
+@Table(name="USR")
 public class User extends BaseEntity implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="MAIL_USER_ID_SEQ_GEN")
-	@SequenceGenerator(name="MAIL_USER_ID_SEQ_GEN", sequenceName="MAIL_USER_ID_SEQ_GEN")
-	@Column(name="USER_ID")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="USR_ID_SEQ_GEN")
+	@SequenceGenerator(name="USR_ID_SEQ_GEN", sequenceName="USR_ID_SEQ")
+	@Column(name="USR_ID")
 	private Long userId;
 	
-	@Column(name="USERNAME" , length=20, unique=true, nullable=false)
-	private String username;
+	@Column(name="USR_LOGN_ID" , length=20, unique=true, nullable=false)
+	private String userLoginId;
 	
 	@Column(name="PASSWORD" , length=20, nullable=false)
 	private String password;
 	
-	@Column(name="USER_FST_NAM", length=40, nullable=false)
+	@Column(name="USR_FST_NAM", length=40, nullable=false)
 	private String userFirstName;
 	
-	@Column(name="USER_LST_NAM", length=40, nullable=false)
+	@Column(name="USR_LST_NAM", length=40, nullable=false)
 	private String userLastName;
 	
-	@Column(name="USER_STS", length=5, nullable=false)
+	@Column(name="USR_STS_TYP_CDE", length=5, nullable=false)
 	private String userStatus;
 	
-	@Column(name="USER_ADM_RLE", length=1, nullable=false)
+	@Column(name="USR_ADM_RLE", length=1, nullable=false)
 	private String userAdminRole;
 
-	@Column(name="USER_EMAIL" , length=100, unique=true, nullable=false)
+	@Column(name="USR_EMAIL" , length=100, unique=true, nullable=false)
 	private String userEmail;
 
 	
@@ -52,12 +52,12 @@ public class User extends BaseEntity implements Serializable {
 		this.userId = userId;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getUserLoginId() {
+		return userLoginId;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUserLoginId(String userLoginId) {
+		this.userLoginId = userLoginId;
 	}
 
 	public String getPassword() {

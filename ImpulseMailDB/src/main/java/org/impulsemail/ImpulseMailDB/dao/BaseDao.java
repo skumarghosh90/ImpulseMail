@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import org.impulsemail.ImpulseMailDB.entity.BaseEntity;
-import org.impulsemail.ImpulseMailDB.entity.Message;
-import org.impulsemail.ImpulseMailDB.entity.User;
 import org.springframework.dao.DataAccessException;
 
 public interface BaseDao<E extends BaseEntity, K extends Serializable> {

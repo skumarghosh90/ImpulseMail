@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Type;
+
 
 @SuppressWarnings("serial")
 @Entity
@@ -37,12 +39,18 @@ public class User extends BaseEntity implements Serializable {
 	@Column(name="USR_STS_TYP_CDE", length=5, nullable=false)
 	private String userStatus;
 	
-	@Column(name="USR_ADM_RLE", length=1, nullable=false)
-	private String userAdminRole;
+	@Column(name="USR_ADM_RLE", length=1, nullable=false, columnDefinition=" default 'N' ")
+	@Type(type="org.hibernate.type.YesNoType")
+	private Boolean userAdminRole;
 
 	@Column(name="USR_EMAIL" , length=100, unique=true, nullable=false)
 	private String userEmail;
+	
+	@Column(name="USR_PIC", nullable=true)
+	@Type(type="org.hibernate.type.MaterializedBlobType")
+	private byte[] userPicture;
 
+	
 	
 	public Long getUserId() {
 		return userId;
@@ -92,11 +100,11 @@ public class User extends BaseEntity implements Serializable {
 		this.userStatus = userStatus;
 	}
 
-	public String getUserAdminRole() {
+	public Boolean getUserAdminRole() {
 		return userAdminRole;
 	}
 
-	public void setUserAdminRole(String userAdminRole) {
+	public void setUserAdminRole(Boolean userAdminRole) {
 		this.userAdminRole = userAdminRole;
 	}
 
@@ -106,6 +114,14 @@ public class User extends BaseEntity implements Serializable {
 
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
+	}
+
+	public byte[] getUserPicture() {
+		return userPicture;
+	}
+
+	public void setUserPicture(byte[] userPicture) {
+		this.userPicture = userPicture;
 	}	
 	
 }

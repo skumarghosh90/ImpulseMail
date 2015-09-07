@@ -39,7 +39,7 @@ public class User extends BaseEntity implements Serializable {
 	@Column(name="USR_STS_TYP_CDE", length=5, nullable=false)
 	private String userStatus;
 	
-	@Column(name="USR_ADM_RLE", length=1, nullable=false, columnDefinition=" default 'N' ")
+	@Column(name="USR_ADM_RLE", length=1, nullable=false)
 	@Type(type="org.hibernate.type.YesNoType")
 	private Boolean userAdminRole;
 

@@ -25,8 +25,8 @@ public class UserDaoImpl extends BaseDaoImpl<User, Integer> implements UserDao {
 
 	@Override
 	@Transactional(readOnly=true)
-	public User findUserByUsername(String username) {
-		return (User) getCurrentSession().createCriteria(User.class).add(Restrictions.eq("username", username).ignoreCase()).uniqueResult();
+	public User findUserByUserLoginId(String userLoginId) {
+		return (User) getCurrentSession().createCriteria(User.class).add(Restrictions.eq("userLoginId", userLoginId).ignoreCase()).uniqueResult();
 	}
 
 }

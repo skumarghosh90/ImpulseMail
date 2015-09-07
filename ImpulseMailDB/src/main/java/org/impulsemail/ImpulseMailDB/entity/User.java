@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,6 +13,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
+import org.impulsemail.ImpulseMailDB.types.UserStatusType;
 
 
 @SuppressWarnings("serial")
@@ -36,8 +39,9 @@ public class User extends BaseEntity implements Serializable {
 	@Column(name="USR_LST_NAM", length=40, nullable=false)
 	private String userLastName;
 	
+	@Enumerated(EnumType.STRING)
 	@Column(name="USR_STS_TYP_CDE", length=5, nullable=false)
-	private String userStatus;
+	private UserStatusType userStatusTypCode;
 	
 	@Column(name="USR_ADM_RLE", length=1, nullable=false)
 	@Type(type="org.hibernate.type.YesNoType")
@@ -92,12 +96,12 @@ public class User extends BaseEntity implements Serializable {
 		this.userLastName = userLastName;
 	}
 
-	public String getUserStatus() {
-		return userStatus;
+	public UserStatusType getUserStatusTypCode() {
+		return userStatusTypCode;
 	}
 
-	public void setUserStatus(String userStatus) {
-		this.userStatus = userStatus;
+	public void setUserStatusTypCode(UserStatusType userStatusTypCode) {
+		this.userStatusTypCode = userStatusTypCode;
 	}
 
 	public Boolean getUserAdminRole() {

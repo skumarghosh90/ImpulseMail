@@ -7,6 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.impulsemail.ImpulseMailDB.dao.UserDao;
 import org.impulsemail.ImpulseMailDB.entity.User;
+import org.impulsemail.ImpulseMailDB.types.UserStatusType;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -24,13 +25,13 @@ public class UserDaoTest {
 	public void testSaveOrupdate() {
 		try{
 			User user=new User();
-			user.setUsername("impulse");
+			user.setUserLoginId("impulse");
 			user.setPassword("impulse");
 			user.setUserEmail("impulse@impulsemail.com");
 			user.setUserFirstName("impulse");
 			user.setUserLastName("impulse");
-			user.setUserAdminRole("Y");
-			user.setUserStatus("ACTIV");
+			user.setUserAdminRole(true);
+			user.setUserStatusTypCode(UserStatusType.ACTIV);
 			user.setCretDtm(new Timestamp(new Date().getTime()));
 			user.setLstUpdtDtm(new Timestamp(new Date().getTime()));
 			
@@ -38,6 +39,7 @@ public class UserDaoTest {
 		}
 		catch(Exception e) {
 			fail("Exception Thrown: " +e.getMessage());
+			e.printStackTrace();
 		}
 	}
 	
@@ -55,7 +57,7 @@ public class UserDaoTest {
 	@Test
 	public void testDelete() {
 		try{
-			User delUser=getUserDao().findUserByUsername("impulse");
+			User delUser=getUserDao().findUserByUserLoginId("impulse");
 			getUserDao().delete(delUser);
 		}
 		catch(Exception e) {

@@ -7,10 +7,11 @@ public enum MessageStatusType {
 	DEL("DEL","Deleted"),
 	RCVD("RCVD","Received"),
 	NRCVD("NRCVD","Not Received Yet"),
+	READ("READ","Read"),
 	DFLD("DFLD", "Delivery Failed");
 	
-	public String messageStatusTypCode;
-	public String messageStatusDescription;
+	private String messageStatusTypCode;
+	private String messageStatusDescription;
 	
 	
 	private MessageStatusType(String messageStatusTypCode,String messageStatusDescription) {

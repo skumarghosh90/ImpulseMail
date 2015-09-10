@@ -24,10 +24,6 @@ public class MessageContent extends BaseEntity {
 	@Type(type="org.hibernate.type.MaterializedClobType")
 	private String messageContentXML;
 	
-	@Column(name="MSG_CNTNT_STS", nullable=false, length=5)
-	private String messageContentStatus;
-	
-
 	
 	public Long getMessageContentId() {
 		return messageContentId;
@@ -43,14 +39,6 @@ public class MessageContent extends BaseEntity {
 
 	public void setMessageContentXML(String messageContentXML) {
 		this.messageContentXML = messageContentXML;
-	}
-
-	public String getMessageContentStatus() {
-		return messageContentStatus;
-	}
-
-	public void setMessageContentStatus(String messageContentStatus) {
-		this.messageContentStatus = messageContentStatus;
 	}
 
 }

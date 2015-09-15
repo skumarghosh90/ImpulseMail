@@ -2,6 +2,7 @@ package org.impulsemail.ImpulseMailDB.dao.impl;
 
 import java.util.List;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.impulsemail.ImpulseMailDB.dao.MessageDao;
@@ -27,10 +28,10 @@ public class MessageDaoImpl extends BaseDaoImpl<Message, Long>implements Message
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(readOnly=true)
-	public List<Message> findAllMessagesBySenderUserId(Long userId) {
+	public List<Message> findAllSentMessagesByUserId(Long userId) {
 		Criteria criteria = getCurrentSession().createCriteria(Message.class);
 		criteria.add(Restrictions.eq("messageSender.userId", userId));
-		criteria.add(Restrictions.eq("messageStatusAtSenderEnd", MessageStatusType.SENT.getMessageStatusTypCode()));
+		criteria.add(Restrictions.eq("messageStatusAtSenderEnd", MessageStatusType.SENT.getMessageStatusTypeCode()));
 		criteria.addOrder(Order.desc("messageSentDtm"));
 		
 		return (List<Message>) criteria.list();
@@ -39,11 +40,10 @@ public class MessageDaoImpl extends BaseDaoImpl<Message, Long>implements Message
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(readOnly=true)
-	public List<Message> findAllMessagesByReceiverUserId(Long userId) {
+	public List<Message> findAllSentMessagesBySubject(String subject) {
 		Criteria criteria = getCurrentSession().createCriteria(Message.class);
-		criteria.add(Restrictions.eq("messageReceiver.userId", userId));
-		criteria.add(Restrictions.in("messageStatusAtReceiverEnd", 
-				new String[] {MessageStatusType.RCVD.getMessageStatusTypCode(),MessageStatusType.}));
+		criteria.add(Restrictions.ilike("messageSubject", subject, MatchMode.ANYWHERE));
+		criteria.add(Restrictions.eq("messageStatusAtSenderEnd", MessageStatusType.SENT.getMessageStatusTypeCode()));
 		criteria.addOrder(Order.desc("messageSentDtm"));
 		
 		return (List<Message>) criteria.list();

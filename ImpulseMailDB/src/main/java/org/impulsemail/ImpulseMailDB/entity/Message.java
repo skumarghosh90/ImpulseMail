@@ -1,7 +1,9 @@
 package org.impulsemail.ImpulseMailDB.entity;
 
 import java.sql.Timestamp;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -12,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -31,7 +34,7 @@ public class Message extends BaseEntity {
 	@Column(name="MSG_SUBJCT", nullable=true, length=300)
 	private String messageSubject;
 	
-	@ManyToOne(optional=false, fetch=FetchType.LAZY)
+	@ManyToOne(optional=false, fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	@JoinColumn(name="MSG_CNTNT_ID", nullable=false)
 	private MessageContent messageContent;
 	
@@ -46,7 +49,8 @@ public class Message extends BaseEntity {
 	@Column(name="MSG_SENT_DTM", nullable=true)
 	private Timestamp messageSentDtm;
 	
-	
+	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	private Set<MessageReceiverDetail> messageReceivers;
 
 	public Long getMessageId() {
 		return messageId;

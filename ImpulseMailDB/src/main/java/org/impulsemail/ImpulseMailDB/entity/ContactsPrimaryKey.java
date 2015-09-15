@@ -12,7 +12,7 @@ public class ContactsPrimaryKey {
 	private User user;
 	
 	@ManyToOne(optional=false)
-	@JoinColumn(name="USR_ID")
+	@JoinColumn(name="CNTACT_ID")
 	private User contact;
 
 	

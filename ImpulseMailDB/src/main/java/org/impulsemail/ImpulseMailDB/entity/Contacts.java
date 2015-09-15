@@ -10,14 +10,32 @@ import javax.persistence.Table;
 import org.impulsemail.ImpulseMailDB.types.ContactStatusType;
 
 @Entity
-@Table(name="CNTCT")
+@Table(name="CNTACT")
 public class Contacts {
 	
 	@EmbeddedId
 	private ContactsPrimaryKey contactsPrimaryKey;
 	
 	@Enumerated(EnumType.STRING)
-	@Column(name="CNTCT_STS_TYP_CDE", length=5, nullable=false)
+	@Column(name="CNTACT_STS_TYP_CDE", length=5, nullable=false)
 	private ContactStatusType contactStatusTypeCode;
 	
+	
+
+	public ContactsPrimaryKey getContactsPrimaryKey() {
+		return contactsPrimaryKey;
+	}
+
+	public void setContactsPrimaryKey(ContactsPrimaryKey contactsPrimaryKey) {
+		this.contactsPrimaryKey = contactsPrimaryKey;
+	}
+
+	public ContactStatusType getContactStatusTypeCode() {
+		return contactStatusTypeCode;
+	}
+
+	public void setContactStatusTypeCode(ContactStatusType contactStatusTypeCode) {
+		this.contactStatusTypeCode = contactStatusTypeCode;
+	}
+
 }

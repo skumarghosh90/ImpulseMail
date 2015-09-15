@@ -6,12 +6,33 @@ public enum UserStatusType {
 	DEL("DEL","Deleted");
 	
 	
-	public String userStatusTypCode;
-	public String userStatusDescription;
+	private String userStatusTypeCode;
+	private String userStatusDescription;
 	
 	
 	private UserStatusType(String userStatusTypCode,String userStatusDescription) {
-		this.userStatusTypCode=userStatusTypCode;
+		this.userStatusTypeCode=userStatusTypCode;
 		this.userStatusDescription=userStatusDescription;
 	}
+
+
+	public String getUserStatusTypeCode() {
+		return userStatusTypeCode;
+	}
+
+
+	public void setUserStatusTypeCode(String userStatusTypeCode) {
+		this.userStatusTypeCode = userStatusTypeCode;
+	}
+
+
+	public String getUserStatusDescription() {
+		return userStatusDescription;
+	}
+
+
+	public void setUserStatusDescription(String userStatusDescription) {
+		this.userStatusDescription = userStatusDescription;
+	}
+	
 }

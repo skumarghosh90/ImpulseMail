@@ -10,21 +10,21 @@ public enum MessageStatusType {
 	READ("READ","Read"),
 	DFLD("DFLD", "Delivery Failed");
 	
-	private String messageStatusTypCode;
+	private String messageStatusTypeCode;
 	private String messageStatusDescription;
 	
 	
-	private MessageStatusType(String messageStatusTypCode,String messageStatusDescription) {
-		this.messageStatusTypCode=messageStatusTypCode;
+	private MessageStatusType(String messageStatusTypeCode,String messageStatusDescription) {
+		this.messageStatusTypeCode=messageStatusTypeCode;
 		this.messageStatusDescription=messageStatusDescription;
 	}
 
-	public String getMessageStatusTypCode() {
-		return messageStatusTypCode;
+	public String getMessageStatusTypeCode() {
+		return messageStatusTypeCode;
 	}
 
-	public void setMessageStatusTypCode(String messageStatusTypCode) {
-		this.messageStatusTypCode = messageStatusTypCode;
+	public void setMessageStatusTypeCode(String messageStatusTypCode) {
+		this.messageStatusTypeCode = messageStatusTypCode;
 	}
 
 	public String getMessageStatusDescription() {

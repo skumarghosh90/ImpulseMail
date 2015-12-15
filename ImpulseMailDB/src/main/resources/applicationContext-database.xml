@@ -7,8 +7,7 @@
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-		destroy-method="close">
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<!-- ORACLE 10/11g <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" 
 			/> <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" /> <property 
 			name="username" value="impulseMailDB" /> <property name="password" value="impulseMailDB" 
@@ -16,8 +15,7 @@
 
 		<!-- POSTGRESQL 9.x -->
 		<property name="driverClassName" value="org.postgresql.Driver" />
-		<property name="url"
-			value="#{'jdbc:postgresql://' + @dbUrl.getHost() + ':' + @dbUrl.getPort() + @dbUrl.getPath()}" />
+		<property name="url" value="#{'jdbc:postgresql://' + @dbUrl.getHost() + ':' + @dbUrl.getPort() + @dbUrl.getPath()}" />
 		<property name="username" value="#{@dbUrl.getUserInfo().split(':')[0]}" />
 		<property name="password" value="#{@dbUrl.getUserInfo().split(':')[1]}" />
 
@@ -26,16 +24,18 @@
 			name="username" value="sa" /> <property name="password" value="" /> -->
 
 	</bean>
+	
+	<bean class="java.net.URI" id="dbUrl">
+    	<constructor-arg value="#{systemProperties['DATABASE_URL']}"/>
+	</bean>
 
 	<tx:annotation-driven />
-	<bean id="transactionManager"
-		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
 	<!-- Hibernate 4 SessionFactory Bean definition -->
-	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="annotatedClasses">
 			<list>

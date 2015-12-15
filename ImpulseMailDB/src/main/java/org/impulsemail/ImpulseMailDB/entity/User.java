@@ -9,6 +9,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -18,7 +19,8 @@ import org.impulsemail.ImpulseMailDB.types.UserStatusType;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name="USR")
+@Table(name="USR", indexes={@Index(name="INDEX_USR_LOGIN_ID", columnList="USR_LOGIN_ID"),
+							@Index(name="INDEX_USR_EMAIL", columnList="USR_EMAIL")})
 public class User extends BaseEntity implements Serializable {
 
 	@Id
@@ -27,7 +29,7 @@ public class User extends BaseEntity implements Serializable {
 	@Column(name="USR_ID")
 	private Long userId;
 	
-	@Column(name="USR_LOGN_ID" , length=20, unique=true, nullable=false)
+	@Column(name="USR_LOGIN_ID" , length=20, unique=true, nullable=false)
 	private String userLoginId;
 	
 	@Column(name="PASSWORD" , length=20, nullable=false)

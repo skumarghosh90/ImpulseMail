@@ -23,7 +23,7 @@ public class UserDaoTest {
 	
 	@Test
 	public void testSaveOrupdate() {
-		try{
+		try {
 			User user=new User();
 			user.setUserLoginId("impulse");
 			user.setPassword("impulse");

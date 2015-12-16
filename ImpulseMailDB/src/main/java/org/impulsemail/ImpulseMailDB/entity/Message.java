@@ -12,6 +12,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -22,7 +23,8 @@ import org.impulsemail.ImpulseMailDB.types.MessageStatusType;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name="MSG")
+@Table(name="MSG", indexes={@Index(name="INDEX_MSG_SUBJCT", columnList = "MSG_SUBJCT"),
+							@Index(name="INDEX_MSG_SENT_DTM", columnList="MSG_SENT_DTM")})
 public class Message extends BaseEntity {
 	
 	@Id
@@ -52,6 +54,7 @@ public class Message extends BaseEntity {
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	private Set<MessageReceiverDetail> messageReceivers;
 
+	
 	public Long getMessageId() {
 		return messageId;
 	}

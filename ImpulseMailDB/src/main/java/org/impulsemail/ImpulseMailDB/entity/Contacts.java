@@ -20,7 +20,6 @@ public class Contacts {
 	@Column(name="CNTACT_STS_TYP_CDE", length=5, nullable=false)
 	private ContactStatusType contactStatusTypeCode;
 	
-	
 
 	public ContactsPrimaryKey getContactsPrimaryKey() {
 		return contactsPrimaryKey;

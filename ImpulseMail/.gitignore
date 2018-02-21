@@ -1,0 +1,8 @@
+/target/*
+.classpath
+/target/
+.project
+.settings/*
+.settings
+.recommenders/*
+.recommenders

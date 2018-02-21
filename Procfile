@@ -1,0 +1,1 @@
+web: java -jar target/ImpulseMail-0.2-SNAPSHOT.jar

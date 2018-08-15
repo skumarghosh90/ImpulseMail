@@ -5,3 +5,4 @@
 .settings
 .recommenders/*
 .recommenders
+/bin/

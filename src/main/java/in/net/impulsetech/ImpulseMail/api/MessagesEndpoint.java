@@ -3,11 +3,7 @@ package in.net.impulsetech.ImpulseMail.api;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -26,7 +22,20 @@ public class MessagesEndpoint {
 	public List<Message> getAllMessages(){
 		return MessagesEndpoint.messageList;
 	}
-	
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/inbox")
+	public List<Message> getInboxMessages(@HeaderParam("username") String username){
+		List<Message> userMessages= new ArrayList<Message>();
+		for(Message message: MessagesEndpoint.messageList) {
+			if(message.receiver.equalsIgnoreCase(username)){
+				userMessages.add(message);
+			}
+		}
+		return userMessages;
+	}
+
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
@@ -43,6 +52,6 @@ public class MessagesEndpoint {
 
 class Message{
 	public String sender;
-	public String reciever;
+	public String receiver;
 	public String message;
 }

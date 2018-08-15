@@ -3,12 +3,12 @@ package in.net.impulsetech.ImpulseMail.config;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-//@Controller
+@Controller
 public class WebappController {
 
-	//@RequestMapping("/") 
+	@RequestMapping("/")
 	public String getWebApp() {
-		return "index";
+		return "index.html";
 	}
 
 }

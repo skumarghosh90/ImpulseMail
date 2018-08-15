@@ -5,6 +5,7 @@ import javax.ws.rs.ApplicationPath;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.stereotype.Component;
 
+import in.net.impulsetech.ImpulseMail.api.MessagesEndpoint;
 import in.net.impulsetech.ImpulseMail.api.PropertiesEndpoint;
 
 @Component
@@ -13,6 +14,7 @@ public class JerseyConfig extends ResourceConfig {
 
 	public JerseyConfig() {
 		register(PropertiesEndpoint.class);
+		register(MessagesEndpoint.class);
 	}
 
 }

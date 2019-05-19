@@ -6,3 +6,7 @@
 .recommenders/*
 .recommenders
 /bin/
+/src/main/impulse-mail-webapp-react/build/*
+/src/main/impulse-mail-webapp-react/node/*
+/src/main/impulse-mail-webapp-react/node_modules/*
+/src/main/resources/static/*

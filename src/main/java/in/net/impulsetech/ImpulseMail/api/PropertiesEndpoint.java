@@ -1,16 +1,15 @@
 package in.net.impulsetech.ImpulseMail.api;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Properties;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
+import java.io.IOException;
+import java.util.Map;
+import java.util.Properties;
 
 @Component
 @Path("properties")
@@ -20,7 +19,7 @@ public class PropertiesEndpoint {
 	private Properties appProperties;
 	
 	@PostConstruct
-	public void initialize() throws FileNotFoundException, IOException {
+	public void initialize() throws IOException {
 		appProperties = new Properties();
 		appProperties.load(PropertiesEndpoint.class.getClassLoader().getResourceAsStream("application.properties"));
 	}
@@ -62,10 +61,8 @@ public class PropertiesEndpoint {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public void addProperty(PropBean[] jsonBody) {
-        for(PropBean pb: jsonBody){
-            appProperties.put(pb.name,pb.value);
-        }
+	public void addProperty(Map<String, String> jsonBody) {
+        jsonBody.forEach((key, value) -> appProperties.put(key, value));
 	}
 
 
@@ -80,9 +77,4 @@ public class PropertiesEndpoint {
         }
     }
 
-}
-
-class PropBean {
-    public String name;
-    public String value;
 }
